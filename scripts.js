@@ -11,7 +11,7 @@ const maxGuesses = 6;
 const resetgame = () => {
     correctLetters = [];
     wrongGuessCount = 0;
-    hangmanImage.src = `imgs/hangman-${wrongGuessCount}.png`;
+    hangmanImage.src = `hangman-${wrongGuessCount}.png`;
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
     keyboardDiv.querySelectorAll("button").forEach(btn => btn.disabled = false);
     wordDisplay.innerHTML = currentWord.split("").map(() => `<li class="letter"></li>`). join ("");
@@ -29,7 +29,7 @@ const getRandomWord = () => {
 const gameOver = (isVictory) => {
     setTimeout(() => {
         const modalText = isVictory ? `Você achou a palavra:` : `A palavra certa é:`;
-        gameModal.querySelector("img").src = `imgs/${isVictory ? 'Feliz' : 'Triste'}.png`;
+        gameModal.querySelector("img").src = `${isVictory ? 'Feliz' : 'Triste'}.png`;
         gameModal.querySelector("h4").innerText = `${isVictory ? 'Parabéns!' : 'F TOTAL!'}`;
         gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
         gameModal.classList.add("show");
@@ -47,7 +47,7 @@ const initGame = (button, clickedLetter) => {
         })
     } else {
         wrongGuessCount++;
-        hangmanImage.src = `imgs/hangman-${wrongGuessCount}.png`;
+        hangmanImage.src = `hangman-${wrongGuessCount}.png`;
     }
     button.disabled = true;
     guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
